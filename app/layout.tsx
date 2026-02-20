@@ -1,17 +1,44 @@
 import type React from "react"
-import "@/app/globals.css"
-import { Inter } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
+import type { Metadata } from "next"
+import { IBM_Plex_Sans, IBM_Plex_Mono, Bebas_Neue } from "next/font/google"
+import { Analytics } from "@vercel/analytics/next"
+import { SmoothScroll } from "@/components/smooth-scroll"
+import "./globals.css"
 
-const inter = Inter({
+const ibmPlexSans = IBM_Plex_Sans({
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-ibm-plex-sans",
 })
+const ibmPlexMono = IBM_Plex_Mono({
+  weight: ["400", "500"],
+  subsets: ["latin"],
+  variable: "--font-ibm-plex-mono",
+})
+const bebasNeue = Bebas_Neue({ weight: "400", subsets: ["latin"], variable: "--font-bebas" })
 
-export const metadata = {
-  title: "Kodexa - Soluciones Web Accesibles y Personalizadas",
-  description: "Sitios, landings, eCommerce y software a medida para pymes y emprendedores.",
-    generator: 'v0.dev'
+export const metadata: Metadata = {
+  title: "KODEXA — Build Digital Systems, Not Just Websites",
+  description:
+    "Desarrollo productos digitales modernos, rápidos y escalables para empresas que buscan crecer con estructura.",
+  generator: "v0.app",
+  icons: {
+    icon: [
+      {
+        url: "/icon-light-32x32.png",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "/icon-dark-32x32.png",
+        media: "(prefers-color-scheme: dark)",
+      },
+      {
+        url: "/icon.svg",
+        type: "image/svg+xml",
+      },
+    ],
+    apple: "/apple-icon.png",
+  },
 }
 
 export default function RootLayout({
@@ -20,11 +47,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="es" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans`}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
-          {children}
-        </ThemeProvider>
+    <html lang="en" className="dark bg-background">
+      <body
+        className={`${ibmPlexSans.variable} ${bebasNeue.variable} ${ibmPlexMono.variable} font-sans antialiased overflow-x-hidden`}
+      >
+        <div className="noise-overlay" aria-hidden="true" />
+        <SmoothScroll>{children}</SmoothScroll>
+        <Analytics />
       </body>
     </html>
   )
