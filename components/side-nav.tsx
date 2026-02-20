@@ -10,7 +10,7 @@ const navItems = [
   { id: "principles", label: "Process" },
   { id: "tech", label: "Technology" },
   { id: "membership", label: "IT Team" },
-  { id: "founder", label: "Founder" },
+  { id: "founder", label: "Team" },
   { id: "contact", label: "Contact" },
 ]
 
