@@ -110,14 +110,14 @@ export function MembershipSection() {
     >
       {/* Section header */}
       <div ref={headerRef} className="mb-16">
-        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">05 / IT Team</span>
+        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">04 / IT Team</span>
         <h2 className="mt-4 font-[var(--font-bebas)] text-5xl md:text-8xl tracking-tight leading-none">
           {"YOUR EXTERNAL"}
           <br />
           <span className="text-accent">IT TEAM</span>
         </h2>
         <p className="mt-8 max-w-xl font-mono text-sm text-muted-foreground leading-relaxed">
-          Servicio mensual para empresas que necesitan evolucion constante, mejoras estrategicas y soporte tecnico especializado.
+          Servicio mensual para empresas que necesitan mantenimiento, mejoras continuas y evolucion de su sitio web.
         </p>
       </div>
 

@@ -8,9 +8,8 @@ const navItems = [
   { id: "services", label: "Services" },
   { id: "work", label: "Portfolio" },
   { id: "principles", label: "Process" },
-  { id: "tech", label: "Technology" },
   { id: "membership", label: "IT Team" },
-  { id: "founder", label: "Team" },
+  { id: "founder", label: "Studio" },
   { id: "contact", label: "Contact" },
 ]
 

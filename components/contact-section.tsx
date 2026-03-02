@@ -118,7 +118,7 @@ export function ContactSection() {
     >
       {/* Header */}
       <div ref={headerRef} className="flex flex-col items-center text-center mb-16">
-        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-6">07 / Contacto</span>
+        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-6">06 / Contacto</span>
 
         <h2 className="font-[var(--font-bebas)] text-6xl md:text-8xl lg:text-9xl tracking-tight leading-none">
           {"LET'S "}
@@ -278,7 +278,7 @@ export function ContactSection() {
         <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
           {"© 2025 Kodexa. All rights reserved."}
         </p>
-        <p className="font-mono text-[10px] text-muted-foreground">Build digital systems. Not just websites.</p>
+        <p className="font-mono text-[10px] text-muted-foreground">Modern web development, built right.</p>
       </div>
     </section>
   )

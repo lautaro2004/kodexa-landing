@@ -16,37 +16,35 @@ export function PrinciplesSection() {
     {
       number: "01",
       titleParts: [
-        { text: "STRUCTURE", highlight: true },
-        { text: " FIRST", highlight: false },
+        { text: "STRATEGY", highlight: true },
       ],
-      description: "Primero arquitectura, después diseño.",
+      description: "Entendemos tu negocio y definimos objetivos claros antes de diseñar o escribir una sola línea.",
       align: "left",
     },
     {
       number: "02",
       titleParts: [
-        { text: "PERFORMANCE", highlight: true },
-        { text: " MATTERS", highlight: false },
+        { text: "DESIGN", highlight: true },
       ],
-      description: "Velocidad y experiencia como prioridad.",
+      description: "Creamos interfaces modernas, limpias y pensadas para que tu usuario tenga la mejor experiencia.",
       align: "right",
     },
     {
       number: "03",
       titleParts: [
-        { text: "SCALABLE ", highlight: false },
-        { text: "SOLUTIONS", highlight: true },
+        { text: "DEVELOP", highlight: false },
+        { text: "MENT", highlight: true },
       ],
-      description: "Pensado para crecer sin rehacer todo.",
+      description: "Construimos tu sitio con código profesional, rápido y preparado para crecer.",
       align: "left",
     },
     {
       number: "04",
       titleParts: [
-        { text: "CLEAN ", highlight: false },
-        { text: "CODE", highlight: true },
+        { text: "OPTIMI", highlight: false },
+        { text: "ZATION", highlight: true },
       ],
-      description: "Ordenado, mantenible y profesional.",
+      description: "Velocidad, SEO y mejoras continuas para que tu web rinda al máximo.",
       align: "right",
     },
   ]

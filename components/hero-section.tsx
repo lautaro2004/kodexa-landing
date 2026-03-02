@@ -56,11 +56,11 @@ export function HeroSection() {
         </SplitFlapAudioProvider>
 
         <h2 className="font-[var(--font-bebas)] text-muted-foreground/60 text-[clamp(1.2rem,3.5vw,2.5rem)] mt-4 tracking-wide">
-          BUILD DIGITAL SYSTEMS — NOT JUST WEBSITES
+          BUILT FOR PERFORMANCE AND GROWTH
         </h2>
 
         <p className="mt-12 max-w-lg font-mono text-sm text-muted-foreground leading-relaxed">
-          Desarrollo productos digitales modernos, rapidos y escalables para empresas que buscan crecer con estructura.
+          Diseñamos y desarrollamos sitios web modernos, rapidos y bien estructurados para empresas que quieren presencia profesional y resultados reales.
         </p>
 
         <div className="mt-16 flex items-center gap-8">
@@ -83,7 +83,7 @@ export function HeroSection() {
       {/* Floating info tag */}
       <div className="absolute bottom-8 right-8 md:bottom-12 md:right-12">
         <div className="border border-border px-4 py-2 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-          Digital Product Studio
+          Web Development Studio
         </div>
       </div>
     </section>

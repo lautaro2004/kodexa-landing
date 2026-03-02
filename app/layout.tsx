@@ -18,9 +18,9 @@ const ibmPlexMono = IBM_Plex_Mono({
 const bebasNeue = Bebas_Neue({ weight: "400", subsets: ["latin"], variable: "--font-bebas" })
 
 export const metadata: Metadata = {
-  title: "KODEXA — Build Digital Systems, Not Just Websites",
+  title: "KODEXA — Modern Web Development",
   description:
-    "Desarrollo productos digitales modernos, rápidos y escalables para empresas que buscan crecer con estructura.",
+    "Diseñamos y desarrollamos sitios web modernos, rápidos y bien estructurados para empresas que quieren presencia profesional.",
   generator: "v0.app",
   icons: {
     icon: [
