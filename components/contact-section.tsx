@@ -4,6 +4,11 @@ import { useRef, useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Forminit } from "forminit";
+
+const forminit = new Forminit({
+  proxyUrl: "/api/forminit",
+});
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -112,39 +117,15 @@ export function ContactSection() {
     e.preventDefault();
     setError(null);
 
-    if (
-      !formData.name ||
-      !formData.email ||
-      !formData.projectType ||
-      !formData.projectStage ||
-      !formData.message
-    ) {
-      setError("Por favor completá todos los campos.");
-      return;
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      setError("Ingresá un email válido.");
-      return;
-    }
+    const formElement = e.currentTarget;
+    const formData = new FormData(formElement);
 
     try {
       setIsSubmitting(true);
 
-      const form = new FormData();
-      form.append("name", formData.name);
-      form.append("email", formData.email);
-      form.append("projectType", formData.projectType);
-      form.append("projectStage", formData.projectStage);
-      form.append("message", formData.message);
+      const { error } = await forminit.submit("920afmph8yf", formData);
 
-      const response = await fetch("https://forminit.com/f/920afmph8yf", {
-        method: "POST",
-        body: form,
-      });
-
-      if (!response.ok) {
+      if (error) {
         throw new Error("Error enviando formulario");
       }
 
@@ -200,7 +181,7 @@ export function ContactSection() {
           <input
             type="text"
             id="name"
-            name="name"
+            name="fi-sender-fullName"
             required
             value={formData.name}
             onChange={handleChange}
@@ -220,7 +201,7 @@ export function ContactSection() {
           <input
             type="email"
             id="email"
-            name="email"
+            name="fi-sender-email"
             required
             value={formData.email}
             onChange={handleChange}
@@ -240,7 +221,7 @@ export function ContactSection() {
           <div className="relative">
             <select
               id="projectType"
-              name="projectType"
+              name="fi-select-projectType"
               required
               value={formData.projectType}
               onChange={handleChange}
@@ -298,7 +279,7 @@ export function ContactSection() {
           <div className="relative">
             <select
               id="projectStage"
-              name="projectStage"
+              name="fi-select-projectStage"
               required
               value={formData.projectStage}
               onChange={handleChange}
@@ -355,7 +336,7 @@ export function ContactSection() {
           </label>
           <textarea
             id="message"
-            name="message"
+            name="fi-text-message"
             required
             rows={5}
             value={formData.message}
