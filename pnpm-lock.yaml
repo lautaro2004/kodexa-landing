@@ -119,6 +119,9 @@ importers:
       embla-carousel-react:
         specifier: 8.5.1
         version: 8.5.1(react@19.2.0)
+      forminit:
+        specifier: ^0.2.4
+        version: 0.2.4(next@16.1.0-canary.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0))
       framer-motion:
         specifier: 12.23.26
         version: 12.23.26(@emotion/is-prop-valid@1.4.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -1444,6 +1447,15 @@ packages:
       picomatch: ^3 || ^4
     peerDependenciesMeta:
       picomatch:
+        optional: true
+
+  forminit@0.2.4:
+    resolution: {integrity: sha512-p7GyP2dz4zIONMmETANUBK36KFr+Td8qwOX6Zn/+eeBvf023Zr5aRv2d46bsFlFRhwrhnpojizw9tHwhAvplYw==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      next: '>=14.0.0'
+    peerDependenciesMeta:
+      next:
         optional: true
 
   fraction.js@5.3.4:
@@ -3124,6 +3136,10 @@ snapshots:
   fdir@6.5.0(picomatch@4.0.3):
     optionalDependencies:
       picomatch: 4.0.3
+
+  forminit@0.2.4(next@16.1.0-canary.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)):
+    optionalDependencies:
+      next: 16.1.0-canary.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
 
   fraction.js@5.3.4: {}
 
