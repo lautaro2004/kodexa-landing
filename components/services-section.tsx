@@ -12,34 +12,37 @@ gsap.registerPlugin(ScrollTrigger)
 const services = [
   {
     title: "LANDING PAGES",
-    description: "Sitios enfocados en conversion, optimizados para velocidad y estructura clara.",
+    description:
+      "Páginas estratégicas enfocadas en conversión, pensadas para captar leads y comunicar tu propuesta de forma clara y efectiva.",
     features: [
-      "Diseño personalizado",
-      "Optimización para conversión",
-      "Velocidad de carga rápida",
-      "Deploy incluido",
+      "Estructura orientada a resultados",
+      "Optimización de velocidad y performance",
+      "Integración con formularios y herramientas externas",
+      "Deploy y puesta en producción incluidos",
     ],
     price: "Desde USD 250",
   },
   {
     title: "SITIOS INSTITUCIONALES",
-    description: "Webs profesionales para empresas que necesitan presencia sólida y bien diseñada.",
+    description:
+      "Web profesional para empresas que necesitan una presencia sólida, clara y bien estructurada.",
     features: [
-      "Hasta 6 secciones",
+      "Arquitectura de contenido bien definida",
+      "Diseño moderno y adaptable",
       "Formularios e integraciones",
-      "Diseño responsive",
-      "SEO técnico incluido",
+      "SEO técnico y buenas prácticas incluidas",
     ],
     price: "Desde USD 500",
   },
   {
-    title: "SITIOS DINAMICOS",
-    description: "Plataformas administrables con panel de gestión y capacidad de crecimiento.",
+    title: "SITIOS DINÁMICOS",
+    description:
+      "Plataformas administrables pensadas para crecer y evolucionar junto al negocio.",
     features: [
-      "Panel de gestión",
-      "Contenido editable",
-      "Funcionalidades a medida",
-      "Preparado para crecer",
+      "Panel de gestión personalizado",
+      "Contenido editable (blog, servicios, productos)",
+      "Arquitectura escalable",
+      "Preparado para futuras integraciones",
     ],
     price: "Desde USD 900",
   },

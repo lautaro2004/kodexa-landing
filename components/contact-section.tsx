@@ -1,31 +1,31 @@
-"use client"
+"use client";
 
-import { useRef, useEffect, useState } from "react"
-import { cn } from "@/lib/utils"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useRef, useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 const projectTypes = [
   "Landing Page",
   "Sitio Institucional",
   "Sistema Web",
   "Soporte Mensual",
-]
+];
 
 const projectStages = [
   "Tengo una idea inicial",
   "Ya tengo diseño",
   "Ya tengo una web y quiero mejorarla",
   "Necesito soporte continuo",
-]
+];
 
 export function ContactSection() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const headerRef = useRef<HTMLDivElement>(null)
-  const formRef = useRef<HTMLFormElement>(null)
-  const footerRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+  const footerRef = useRef<HTMLDivElement>(null);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -33,10 +33,10 @@ export function ContactSection() {
     projectType: "",
     projectStage: "",
     message: "",
-  })
+  });
 
   useEffect(() => {
-    if (!sectionRef.current) return
+    if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
       if (headerRef.current) {
@@ -54,7 +54,7 @@ export function ContactSection() {
               toggleActions: "play none none reverse",
             },
           },
-        )
+        );
       }
 
       if (formRef.current) {
@@ -72,7 +72,7 @@ export function ContactSection() {
               toggleActions: "play none none reverse",
             },
           },
-        )
+        );
       }
 
       if (footerRef.current) {
@@ -90,25 +90,69 @@ export function ContactSection() {
               toggleActions: "play none none reverse",
             },
           },
-        )
+        );
       }
-    }, sectionRef)
+    }, sectionRef);
 
-    return () => ctx.revert()
-  }, [])
+    return () => ctx.revert();
+  }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-  }
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >,
+  ) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const subject = encodeURIComponent(`Nuevo proyecto: ${formData.projectType || "Consulta"}`)
-    const body = encodeURIComponent(
-      `Nombre: ${formData.name}\nEmail: ${formData.email}\nTipo de proyecto: ${formData.projectType}\nEtapa: ${formData.projectStage}\n\nMensaje:\n${formData.message}`
-    )
-    window.location.href = `mailto:hello@kodexa.dev?subject=${subject}&body=${body}`
-  }
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+
+    // Validación básica extra
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.projectType ||
+      !formData.projectStage ||
+      !formData.message
+    ) {
+      setError("Por favor completá todos los campos.");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      setError("Ingresá un email válido.");
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+
+      const response = await fetch("https://forminit.com/f/920afmph8yf", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Error enviando formulario");
+      }
+
+      // Redirección a thank you
+      window.location.href = "/gracias";
+    } catch (err) {
+      setError("Ocurrió un error. Intentá nuevamente.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section
@@ -117,8 +161,13 @@ export function ContactSection() {
       className="relative py-32 pl-6 md:pl-28 pr-6 md:pr-12 border-t border-border/30"
     >
       {/* Header */}
-      <div ref={headerRef} className="flex flex-col items-center text-center mb-16">
-        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-6">06 / Contacto</span>
+      <div
+        ref={headerRef}
+        className="flex flex-col items-center text-center mb-16"
+      >
+        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent mb-6">
+          06 / Contacto
+        </span>
 
         <h2 className="font-[var(--font-bebas)] text-6xl md:text-8xl lg:text-9xl tracking-tight leading-none">
           {"LET'S "}
@@ -140,7 +189,10 @@ export function ContactSection() {
       >
         {/* Name */}
         <div className="space-y-2">
-          <label htmlFor="name" className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+          <label
+            htmlFor="name"
+            className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground"
+          >
             Nombre
           </label>
           <input
@@ -157,7 +209,10 @@ export function ContactSection() {
 
         {/* Email */}
         <div className="space-y-2">
-          <label htmlFor="email" className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+          <label
+            htmlFor="email"
+            className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground"
+          >
             Email
           </label>
           <input
@@ -174,7 +229,10 @@ export function ContactSection() {
 
         {/* Project Type */}
         <div className="space-y-2">
-          <label htmlFor="projectType" className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+          <label
+            htmlFor="projectType"
+            className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground"
+          >
             Tipo de proyecto
           </label>
           <div className="relative">
@@ -186,21 +244,42 @@ export function ContactSection() {
               onChange={handleChange}
               className={cn(
                 "w-full bg-transparent border border-border/50 px-4 py-3 font-mono text-sm focus:border-accent focus:outline-none transition-colors duration-200 appearance-none cursor-pointer",
-                formData.projectType ? "text-foreground" : "text-muted-foreground/40"
+                formData.projectType
+                  ? "text-foreground"
+                  : "text-muted-foreground/40",
               )}
             >
-              <option value="" disabled className="bg-card text-muted-foreground">
+              <option
+                value=""
+                disabled
+                className="bg-card text-muted-foreground"
+              >
                 Seleccionar
               </option>
               {projectTypes.map((type) => (
-                <option key={type} value={type} className="bg-card text-foreground">
+                <option
+                  key={type}
+                  value={type}
+                  className="bg-card text-foreground"
+                >
                   {type}
                 </option>
               ))}
             </select>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" className="text-muted-foreground">
-                <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
+              <svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                className="text-muted-foreground"
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="square"
+                />
               </svg>
             </div>
           </div>
@@ -208,7 +287,10 @@ export function ContactSection() {
 
         {/* Project Stage */}
         <div className="space-y-2">
-          <label htmlFor="projectStage" className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+          <label
+            htmlFor="projectStage"
+            className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground"
+          >
             {"¿En qué etapa está tu proyecto?"}
           </label>
           <div className="relative">
@@ -220,21 +302,42 @@ export function ContactSection() {
               onChange={handleChange}
               className={cn(
                 "w-full bg-transparent border border-border/50 px-4 py-3 font-mono text-sm focus:border-accent focus:outline-none transition-colors duration-200 appearance-none cursor-pointer",
-                formData.projectStage ? "text-foreground" : "text-muted-foreground/40"
+                formData.projectStage
+                  ? "text-foreground"
+                  : "text-muted-foreground/40",
               )}
             >
-              <option value="" disabled className="bg-card text-muted-foreground">
+              <option
+                value=""
+                disabled
+                className="bg-card text-muted-foreground"
+              >
                 Seleccionar
               </option>
               {projectStages.map((stage) => (
-                <option key={stage} value={stage} className="bg-card text-foreground">
+                <option
+                  key={stage}
+                  value={stage}
+                  className="bg-card text-foreground"
+                >
                   {stage}
                 </option>
               ))}
             </select>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-              <svg width="10" height="6" viewBox="0 0 10 6" fill="none" className="text-muted-foreground">
-                <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="square" />
+              <svg
+                width="10"
+                height="6"
+                viewBox="0 0 10 6"
+                fill="none"
+                className="text-muted-foreground"
+              >
+                <path
+                  d="M1 1L5 5L9 1"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="square"
+                />
               </svg>
             </div>
           </div>
@@ -242,7 +345,10 @@ export function ContactSection() {
 
         {/* Message */}
         <div className="space-y-2">
-          <label htmlFor="message" className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+          <label
+            htmlFor="message"
+            className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground"
+          >
             Mensaje
           </label>
           <textarea
@@ -260,10 +366,17 @@ export function ContactSection() {
         {/* Submit */}
         <button
           type="submit"
-          className="w-full bg-accent text-accent-foreground py-4 font-mono text-xs uppercase tracking-widest hover:opacity-90 transition-opacity duration-200"
+          disabled={isSubmitting}
+          className="w-full bg-accent text-accent-foreground py-4 font-mono text-xs uppercase tracking-widest hover:opacity-90 transition-opacity duration-200 disabled:opacity-50"
         >
-          Iniciar Proyecto
+          {isSubmitting ? "Enviando..." : "Iniciar Proyecto"}
         </button>
+
+        {error && (
+          <p className="text-center font-mono text-[10px] text-red-500 uppercase tracking-widest">
+            {error}
+          </p>
+        )}
 
         <p className="text-center font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
           Te respondo dentro de 24 hs.
@@ -278,8 +391,10 @@ export function ContactSection() {
         <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
           {"© 2025 Kodexa. All rights reserved."}
         </p>
-        <p className="font-mono text-[10px] text-muted-foreground">Modern web development, built right.</p>
+        <p className="font-mono text-[10px] text-muted-foreground">
+          Modern web development, built right.
+        </p>
       </div>
     </section>
-  )
+  );
 }
