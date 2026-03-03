@@ -33,12 +33,12 @@ export function ContactSection() {
   const footerRef = useRef<HTMLDivElement>(null);
 
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    projectType: "",
-    projectStage: "",
-    message: "",
-  });
+  "fi-sender-fullName": "",
+  "fi-sender-email": "",
+  "fi-select-projectType": "",
+  "fi-select-projectStage": "",
+  "fi-text-message": "",
+});
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -183,7 +183,7 @@ export function ContactSection() {
             id="name"
             name="fi-sender-fullName"
             required
-            value={formData.name}
+            value={formData["fi-sender-fullName"]}
             onChange={handleChange}
             className="w-full bg-transparent border border-border/50 px-4 py-3 font-mono text-sm text-foreground placeholder:text-muted-foreground/40 focus:border-accent focus:outline-none transition-colors duration-200"
             placeholder="Tu nombre"
@@ -203,7 +203,7 @@ export function ContactSection() {
             id="email"
             name="fi-sender-email"
             required
-            value={formData.email}
+            value={formData["fi-sender-email"]}
             onChange={handleChange}
             className="w-full bg-transparent border border-border/50 px-4 py-3 font-mono text-sm text-foreground placeholder:text-muted-foreground/40 focus:border-accent focus:outline-none transition-colors duration-200"
             placeholder="tu@email.com"
@@ -223,11 +223,11 @@ export function ContactSection() {
               id="projectType"
               name="fi-select-projectType"
               required
-              value={formData.projectType}
+              value={formData["fi-select-projectType"]}
               onChange={handleChange}
               className={cn(
                 "w-full bg-transparent border border-border/50 px-4 py-3 font-mono text-sm focus:border-accent focus:outline-none transition-colors duration-200 appearance-none cursor-pointer",
-                formData.projectType
+                formData["fi-select-projectType"]
                   ? "text-foreground"
                   : "text-muted-foreground/40",
               )}
@@ -281,11 +281,11 @@ export function ContactSection() {
               id="projectStage"
               name="fi-select-projectStage"
               required
-              value={formData.projectStage}
+              value={formData["fi-select-projectStage"]}
               onChange={handleChange}
               className={cn(
                 "w-full bg-transparent border border-border/50 px-4 py-3 font-mono text-sm focus:border-accent focus:outline-none transition-colors duration-200 appearance-none cursor-pointer",
-                formData.projectStage
+                formData["fi-select-projectStage"]
                   ? "text-foreground"
                   : "text-muted-foreground/40",
               )}
@@ -339,7 +339,7 @@ export function ContactSection() {
             name="fi-text-message"
             required
             rows={5}
-            value={formData.message}
+            value={formData["fi-text-message"]}
             onChange={handleChange}
             className="w-full bg-transparent border border-border/50 px-4 py-3 font-mono text-sm text-foreground placeholder:text-muted-foreground/40 focus:border-accent focus:outline-none transition-colors duration-200 resize-none"
             placeholder="Contame sobre tu proyecto..."
