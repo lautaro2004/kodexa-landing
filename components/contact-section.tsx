@@ -108,11 +108,10 @@ export function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
 
-    // Validación básica extra
     if (
       !formData.name ||
       !formData.email ||
@@ -133,19 +132,22 @@ export function ContactSection() {
     try {
       setIsSubmitting(true);
 
+      const form = new FormData();
+      form.append("name", formData.name);
+      form.append("email", formData.email);
+      form.append("projectType", formData.projectType);
+      form.append("projectStage", formData.projectStage);
+      form.append("message", formData.message);
+
       const response = await fetch("https://forminit.com/f/920afmph8yf", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        body: form,
       });
 
       if (!response.ok) {
         throw new Error("Error enviando formulario");
       }
 
-      // Redirección a thank you
       window.location.href = "/gracias";
     } catch (err) {
       setError("Ocurrió un error. Intentá nuevamente.");
