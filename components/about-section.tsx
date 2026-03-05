@@ -171,7 +171,7 @@ export function AboutSection() {
             {/* Links */}
             <div className="mt-10 flex items-center gap-6">
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/lautaro-aquino-007a1625b/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-muted-foreground hover:text-accent transition-colors duration-200"
@@ -182,7 +182,7 @@ export function AboutSection() {
                 LinkedIn
               </a>
               <a
-                href="https://portfolio.dev"
+                href="https://lautaroaquino.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-muted-foreground hover:text-accent transition-colors duration-200"

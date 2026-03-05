@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import { useRef, useEffect } from "react"
-import { cn } from "@/lib/utils"
-import { ScrambleTextOnHover } from "@/components/scramble-text"
-import { BitmapChevron } from "@/components/bitmap-chevron"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useRef, useEffect } from "react";
+import { cn } from "@/lib/utils";
+import { ScrambleTextOnHover } from "@/components/scramble-text";
+import { BitmapChevron } from "@/components/bitmap-chevron";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 
 const services = [
   {
@@ -21,6 +21,8 @@ const services = [
       "Deploy y puesta en producción incluidos",
     ],
     price: "Desde USD 250",
+    whatsappMessage:
+      "Hola Lautaro! Vi tu web y me interesa desarrollar una Landing Page. ¿Podemos hablar?",
   },
   {
     title: "SITIOS INSTITUCIONALES",
@@ -33,6 +35,8 @@ const services = [
       "SEO técnico y buenas prácticas incluidas",
     ],
     price: "Desde USD 500",
+    whatsappMessage:
+      "Hola Lautaro! Me interesa desarrollar un Sitio Institucional para mi empresa. ¿Podemos hablar?",
   },
   {
     title: "SITIOS DINÁMICOS",
@@ -45,17 +49,19 @@ const services = [
       "Preparado para futuras integraciones",
     ],
     price: "Desde USD 900",
+    whatsappMessage:
+      "Hola Lautaro! Estoy interesado en desarrollar un sitio dinámico con panel de gestión. ¿Podemos hablar?",
   },
-]
+];
 
 export function ServicesSection() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const headerRef = useRef<HTMLDivElement>(null)
-  const cardsRef = useRef<HTMLDivElement>(null)
-  const ctaRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!sectionRef.current || !headerRef.current || !cardsRef.current) return
+    if (!sectionRef.current || !headerRef.current || !cardsRef.current) return;
 
     const ctx = gsap.context(() => {
       gsap.fromTo(
@@ -72,9 +78,9 @@ export function ServicesSection() {
             toggleActions: "play none none reverse",
           },
         },
-      )
+      );
 
-      const cards = cardsRef.current?.querySelectorAll("article")
+      const cards = cardsRef.current?.querySelectorAll("article");
       if (cards) {
         gsap.fromTo(
           cards,
@@ -91,7 +97,7 @@ export function ServicesSection() {
               toggleActions: "play none none reverse",
             },
           },
-        )
+        );
       }
 
       if (ctaRef.current) {
@@ -109,19 +115,33 @@ export function ServicesSection() {
               toggleActions: "play none none reverse",
             },
           },
-        )
+        );
       }
-    }, sectionRef)
+    }, sectionRef);
 
-    return () => ctx.revert()
-  }, [])
+    return () => ctx.revert();
+  }, []);
+
+  const whatsappGeneralLink =
+    "https://wa.me/5491167470473?text=" +
+    encodeURIComponent(
+      "Hola Lautaro! Estuve viendo tu web y me gustaría hablar sobre un proyecto.",
+    );
 
   return (
-    <section id="services" ref={sectionRef} className="relative py-32 pl-6 md:pl-28 pr-6 md:pr-12">
+    <section
+      id="services"
+      ref={sectionRef}
+      className="relative py-32 pl-6 md:pl-28 pr-6 md:pr-12"
+    >
       {/* Section header */}
       <div ref={headerRef} className="mb-16">
-        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">01 / Services</span>
-        <h2 className="mt-4 font-[var(--font-bebas)] text-5xl md:text-7xl tracking-tight">WHAT WE BUILD</h2>
+        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
+          01 / Services
+        </span>
+        <h2 className="mt-4 font-[var(--font-bebas)] text-5xl md:text-7xl tracking-tight">
+          WHAT WE BUILD
+        </h2>
       </div>
 
       {/* Horizontal scroll container */}
@@ -146,29 +166,62 @@ export function ServicesSection() {
             <span className="text-accent">tu negocio</span>
             {"?"}
           </h3>
+
           <p className="mt-2 font-mono text-xs text-muted-foreground leading-relaxed">
             Cada proyecto puede adaptarse a tus necesidades.
           </p>
+          <p className="font-mono text-[10px] text-muted-foreground">
+            Respondo generalmente dentro de las próximas 24 horas.
+          </p>
         </div>
-        <a
-          href="#contact"
-          className="group inline-flex items-center gap-3 border border-foreground/20 px-6 py-3 font-mono text-xs uppercase tracking-widest text-foreground hover:border-accent hover:text-accent transition-all duration-200 shrink-0"
-        >
-          <ScrambleTextOnHover text="Solicitar Propuesta" as="span" duration={0.6} />
-          <BitmapChevron className="transition-transform duration-[400ms] ease-in-out group-hover:rotate-45" />
-        </a>
+
+        <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+          {/* Form CTA */}
+          <a
+            href="#contact"
+            className="group inline-flex items-center justify-center gap-3 border border-foreground/20 px-6 py-3 font-mono text-xs uppercase tracking-widest text-foreground hover:border-accent hover:text-accent transition-all duration-200"
+          >
+            <ScrambleTextOnHover
+              text="Solicitar Propuesta"
+              as="span"
+              duration={0.6}
+            />
+            <BitmapChevron className="transition-transform duration-[400ms] ease-in-out group-hover:rotate-45" />
+          </a>
+
+          {/* WhatsApp CTA */}
+          <a
+            href={whatsappGeneralLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center justify-center gap-3 border border-accent/40 px-6 py-3 font-mono text-xs uppercase tracking-widest text-accent hover:bg-accent hover:text-black transition-all duration-200"
+          >
+            Hablar por WhatsApp
+            <BitmapChevron className="transition-transform duration-[400ms] ease-in-out group-hover:rotate-45" />
+          </a>
+        </div>
       </div>
     </section>
-  )
+  );
 }
 
 function ServiceCard({
   service,
   index,
 }: {
-  service: { title: string; description: string; features: string[]; price: string }
-  index: number
+  service: {
+    title: string;
+    description: string;
+    features: string[];
+    price: string;
+    whatsappMessage: string;
+  };
+  index: number;
 }) {
+  const whatsappLink = `https://wa.me/5491167470473?text=${encodeURIComponent(
+    service.whatsappMessage,
+  )}`;
+
   return (
     <article
       className={cn(
@@ -197,21 +250,38 @@ function ServiceCard({
         <div className="w-12 h-px bg-accent/60 mb-6 group-hover:w-full transition-all duration-500" />
 
         {/* Description */}
-        <p className="font-mono text-xs text-muted-foreground leading-relaxed mb-6">{service.description}</p>
+        <p className="font-mono text-xs text-muted-foreground leading-relaxed mb-6">
+          {service.description}
+        </p>
 
         {/* Features list */}
         <ul className="flex-1 space-y-2 mb-8">
           {service.features.map((feature, i) => (
-            <li key={i} className="font-mono text-xs text-foreground/70 flex items-start gap-2">
+            <li
+              key={i}
+              className="font-mono text-xs text-foreground/70 flex items-start gap-2"
+            >
               <span className="text-accent mt-0.5 shrink-0">{"/"}</span>
               {feature}
             </li>
           ))}
         </ul>
 
-        {/* Price */}
-        <div className="mt-auto pt-6 border-t border-border/30">
-          <span className="font-[var(--font-bebas)] text-2xl text-accent tracking-tight">{service.price}</span>
+        {/* Price + WhatsApp CTA */}
+        <div className="mt-auto pt-6 border-t border-border/30 flex flex-col gap-4">
+          <span className="font-[var(--font-bebas)] text-2xl text-accent tracking-tight">
+            {service.price}
+          </span>
+
+          <a
+            href={whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group/btn inline-flex items-center justify-center gap-2 border border-accent/40 px-4 py-3 font-mono text-[10px] uppercase tracking-widest text-accent hover:bg-accent hover:text-black transition-all duration-200"
+          >
+            Consultar por WhatsApp
+            <BitmapChevron className="transition-transform duration-300 group-hover/btn:rotate-45" />
+          </a>
         </div>
 
         {/* Bottom right corner fold effect */}
@@ -223,5 +293,5 @@ function ServiceCard({
       {/* Shadow/depth layer */}
       <div className="absolute inset-0 -z-10 translate-x-1 translate-y-1 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
     </article>
-  )
+  );
 }
