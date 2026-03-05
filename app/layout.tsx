@@ -94,7 +94,7 @@ export const metadata: Metadata = {
     title: "Kodexa — Desarrollo Web Moderno",
     description:
       "Sitios web modernos, rápidos y bien estructurados para empresas que quieren crecer online.",
-    images: ["/og-image.png"],
+    images: ["/og-image2.png"],
   },
 
   themeColor: "#ff6a00",
