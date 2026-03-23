@@ -1,7 +1,7 @@
 import { HeroSection } from "@/components/hero-section"
 import { ServicesSection } from "@/components/services-section"
 import { WorkSection } from "@/components/work-section"
-import { PrinciplesSection } from "@/components/principles-section"
+import { ProcessSection } from "@/components/process-section"
 import { MembershipSection } from "@/components/membership-section"
 import { AboutSection } from "@/components/about-section"
 import { ContactSection } from "@/components/contact-section"
@@ -17,7 +17,7 @@ export default function Page() {
         <HeroSection />
         <ServicesSection />
         <WorkSection />
-        <PrinciplesSection />
+        <ProcessSection />
         <MembershipSection />
         <AboutSection />
         <ContactSection />
