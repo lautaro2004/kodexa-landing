@@ -60,7 +60,7 @@ export function ProcessSection() {
       itemsRef.current?.querySelectorAll(".process-item") || [],
     );
 
-    // entrada
+    // entrada mobile (timeline)
     gsap.fromTo(
       items,
       { y: 60, opacity: 0 },
@@ -77,7 +77,7 @@ export function ProcessSection() {
       },
     );
 
-    // línea progresiva
+    // línea progresiva mobile
     if (lineRef.current) {
       gsap.fromTo(
         lineRef.current,
@@ -95,7 +95,7 @@ export function ProcessSection() {
       );
     }
 
-    // step activo
+    // highlight activo mobile
     items.forEach((item) => {
       const title = item.querySelector("h3");
 
@@ -134,34 +134,25 @@ export function ProcessSection() {
         </p>
       </div>
 
-      {/* TIMELINE */}
-      <div className="relative max-w-4xl">
-        {/* línea base */}
-        <div className="absolute left-2 md:left-4 top-0 bottom-0 w-[1px] bg-border/40" />
+      {/* ================= MOBILE TIMELINE ================= */}
+      <div className="relative max-w-4xl lg:hidden">
+        <div className="absolute left-2 top-0 bottom-0 w-[1px] bg-border/40" />
 
-        {/* línea animada */}
         <div
           ref={lineRef}
-          className="absolute left-2 md:left-4 top-0 w-[2px] bg-accent"
+          className="absolute left-2 top-0 w-[2px] bg-accent"
         />
 
         <div ref={itemsRef} className="space-y-20">
           {steps.map((step, index) => (
-            <div
-              key={index}
-              className="process-item relative pl-12 md:pl-16 group"
-            >
-              {/* número */}
+            <div key={index} className="process-item relative pl-12 group">
               <div className="absolute left-0 top-1 w-8 h-8 flex items-center justify-center border border-accent text-[10px] font-mono text-accent bg-background">
                 {step.number}
               </div>
 
-              {/* contenido */}
-              <h3 className="text-3xl md:text-4xl font-semibold transition-colors">
-                {step.title}
-              </h3>
+              <h3 className="text-3xl font-semibold">{step.title}</h3>
 
-              <p className="mt-3 text-base text-muted-foreground max-w-lg leading-relaxed">
+              <p className="mt-3 text-base text-muted-foreground max-w-lg">
                 {step.description}
               </p>
 
@@ -175,22 +166,54 @@ export function ProcessSection() {
         </div>
       </div>
 
-      {/* CTA */}
-      <div className="mt-20 border border-border/40 p-10 text-center">
-        <h3 className="text-3xl">
-          ¿Querés un proyecto que realmente genere resultados?
+      {/* ================= DESKTOP GRID ================= */}
+      <div className="hidden lg:block mt-10">
+        <div className="h-[1px] bg-border/40 mb-10" />
+
+        <div className="grid grid-cols-4 gap-10">
+          {steps.map((step, index) => (
+            <div
+              key={index}
+              className="group border border-border/40 p-6 hover:border-accent transition"
+            >
+              <div className="w-8 h-8 mb-4 flex items-center justify-center border border-accent text-[10px] font-mono text-accent">
+                {step.number}
+              </div>
+
+              <h3 className="text-2xl font-semibold group-hover:text-accent transition-colors">
+                {step.title}
+              </h3>
+
+              <p className="mt-3 text-sm text-muted-foreground">
+                {step.description}
+              </p>
+
+              <div className="mt-4 text-xs text-muted-foreground font-mono space-y-1">
+                {step.bullets.map((b, i) => (
+                  <p key={i}>• {b}</p>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ================= CTA ================= */}
+      <div className="mt-24 border border-border/40 p-10 md:p-16 text-center w-full">
+        <h3 className="text-3xl md:text-5xl font-[var(--font-bebas)] max-w-3xl mx-auto">
+          Contanos tu idea y la convertimos en un producto real.
         </h3>
 
-        <p className="text-sm text-muted-foreground mt-3">
-          Diseñamos y desarrollamos soluciones enfocadas en conversión,
-          performance y escalabilidad.
+        <p className="mt-4 text-sm md:text-base text-muted-foreground max-w-xl mx-auto">
+          Desde la estrategia hasta el desarrollo, te acompañamos en todo el
+          proceso.
         </p>
 
         <a
           href="#contact"
           className="mt-6 inline-flex items-center gap-3 border border-accent px-6 py-3 text-sm uppercase text-accent hover:bg-accent hover:text-black transition"
         >
-          Hablemos
+          Iniciar proyecto
           <BitmapChevron />
         </a>
       </div>
