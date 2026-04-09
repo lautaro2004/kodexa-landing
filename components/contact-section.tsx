@@ -365,19 +365,6 @@ export function ContactSection() {
           Te respondo dentro de 24 hs.
         </p>
       </form>
-
-      {/* Bottom copyright */}
-      <div
-        ref={footerRef}
-        className="mt-32 pt-8 border-t border-border/20 flex flex-col md:flex-row md:items-center md:justify-between gap-4"
-      >
-        <p className="font-mono text-[10px] text-muted-foreground uppercase tracking-widest">
-          {"© 2026 Kodexa. All rights reserved."}
-        </p>
-        <p className="font-mono text-[10px] text-muted-foreground">
-          Modern web development, built right.
-        </p>
-      </div>
     </section>
   );
 }

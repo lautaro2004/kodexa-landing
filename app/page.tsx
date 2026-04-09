@@ -6,10 +6,13 @@ import { MembershipSection } from "@/components/membership-section"
 import { AboutSection } from "@/components/about-section"
 import { ContactSection } from "@/components/contact-section"
 import { SideNav } from "@/components/side-nav"
+import Navbar from "@/components/ui/navbar";
+import Footer from "@/components/ui/footer";
 
 export default function Page() {
   return (
     <main className="relative min-h-screen">
+      <Navbar />
       <SideNav />
       <div className="grid-bg fixed inset-0 opacity-30" aria-hidden="true" />
 
@@ -21,6 +24,7 @@ export default function Page() {
         <MembershipSection />
         <AboutSection />
         <ContactSection />
+        <Footer />
       </div>
     </main>
   )

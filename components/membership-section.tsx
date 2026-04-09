@@ -1,193 +1,193 @@
-"use client"
+"use client";
 
-import { useRef, useEffect } from "react"
-import { cn } from "@/lib/utils"
-import { ScrambleTextOnHover } from "@/components/scramble-text"
-import { BitmapChevron } from "@/components/bitmap-chevron"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrambleTextOnHover } from "@/components/scramble-text";
+import { BitmapChevron } from "@/components/bitmap-chevron";
 
-gsap.registerPlugin(ScrollTrigger)
-
-const plans = [
-  {
-    title: "PLAN START",
-    features: [
-      "10 horas mensuales",
-      "Soporte técnico",
-      "Pequeñas mejoras",
-      "Optimización continua",
-    ],
-    price: "USD 180 / mes",
-  },
-  {
-    title: "PLAN GROWTH",
-    features: [
-      "20 horas mensuales",
-      "Desarrollo continuo",
-      "Nuevas funcionalidades",
-      "Optimización avanzada",
-    ],
-    price: "USD 320 / mes",
-  },
-]
+gsap.registerPlugin(ScrollTrigger);
 
 export function MembershipSection() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const headerRef = useRef<HTMLDivElement>(null)
-  const cardsRef = useRef<HTMLDivElement>(null)
-  const ctaRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!sectionRef.current) return
+    if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      if (headerRef.current) {
-        gsap.fromTo(
-          headerRef.current,
-          { x: -60, opacity: 0 },
-          {
-            x: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: headerRef.current,
-              start: "top 85%",
-              toggleActions: "play none none reverse",
-            },
+      // HEADER
+      gsap.fromTo(
+        headerRef.current,
+        { y: 60, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: headerRef.current,
+            start: "top 85%",
           },
-        )
-      }
+        },
+      );
 
-      if (cardsRef.current) {
-        const cards = cardsRef.current.querySelectorAll(":scope > div")
-        gsap.fromTo(
-          cards,
-          { y: 60, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            stagger: 0.2,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: cardsRef.current,
-              start: "top 85%",
-              toggleActions: "play none none reverse",
-            },
+      // LEFT TEXT
+      gsap.fromTo(
+        contentRef.current?.children || [],
+        { x: -40, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          stagger: 0.12,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: contentRef.current,
+            start: "top 85%",
           },
-        )
-      }
+        },
+      );
 
-      if (ctaRef.current) {
-        gsap.fromTo(
-          ctaRef.current,
-          { y: 30, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: ctaRef.current,
-              start: "top 90%",
-              toggleActions: "play none none reverse",
-            },
+      // CARD
+      gsap.fromTo(
+        cardRef.current,
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: cardRef.current,
+            start: "top 85%",
           },
-        )
-      }
-    }, sectionRef)
+        },
+      );
+    }, sectionRef);
 
-    return () => ctx.revert()
-  }, [])
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section
       ref={sectionRef}
-      id="membership"
-      className="relative py-32 pl-6 md:pl-28 pr-6 md:pr-12 border-t border-border/30"
+      className="relative py-28 px-6 md:px-28 border-t border-border/30 overflow-hidden"
     >
-      {/* Section header */}
-      <div ref={headerRef} className="mb-16">
-        <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">04 / IT Team</span>
-        <h2 className="mt-4 font-[var(--font-bebas)] text-5xl md:text-8xl tracking-tight leading-none">
-          {"YOUR EXTERNAL"}
-          <br />
-          <span className="text-accent">IT TEAM</span>
+      {/* BACKGROUND GLOW */}
+      <div className="absolute right-0 top-0 w-[500px] h-[500px] bg-accent/10 blur-[120px] pointer-events-none" />
+
+      {/* HEADER */}
+      <div ref={headerRef} className="max-w-4xl">
+        <span className="font-mono text-xs text-accent uppercase tracking-widest">
+          04 / IT TEAM
+        </span>
+
+        <h2 className="mt-6 font-[var(--font-bebas)] text-5xl md:text-7xl leading-[0.95] tracking-tight">
+          TU PRODUCTO <span className="text-accent">NO CRECE SOLO.</span> SE
+          ESTANCA.
         </h2>
-        <p className="mt-8 max-w-xl font-mono text-sm text-muted-foreground leading-relaxed">
-          Servicio mensual para empresas que necesitan mantenimiento, mejoras continuas y evolucion de su sitio web.
+
+        <p className="mt-6 text-muted-foreground max-w-2xl">
+          Si nadie lo mejora constantemente, pierde rendimiento, oportunidades y
+          termina quedando atrás.
         </p>
       </div>
 
-      {/* Plans grid */}
-      <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl">
-        {plans.map((plan, index) => (
+      {/* MAIN CARD */}
+      <div
+        ref={cardRef}
+        className="mt-16 md:mt-20 max-w-7xl border border-border/40 bg-gradient-to-b from-white/[0.04] to-transparent backdrop-blur-sm relative group transition-all overflow-hidden hover:border-white/20"
+      >
+        {/* Hover glow sutil */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-white/[0.02] pointer-events-none" />
+
+        <div className="grid md:grid-cols-[1fr_auto_1fr] items-stretch">
+          {/* IZQUIERDA */}
           <div
-            key={index}
-            className={cn(
-              "group relative border border-border/40 p-8 flex flex-col transition-all duration-500",
-              "hover:border-accent/60",
-            )}
+            ref={contentRef}
+            className="p-8 md:p-12 flex flex-col justify-center"
           >
-            {/* Background layer */}
-            <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <p className="text-muted-foreground text-xs uppercase tracking-widest mb-6">
+              Problemas comunes
+            </p>
 
-            <div className="relative z-10">
-              {/* Plan number */}
-              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                No. {String(index + 1).padStart(2, "0")}
-              </span>
-
-              {/* Title */}
-              <h3 className="mt-4 font-[var(--font-bebas)] text-3xl md:text-4xl tracking-tight group-hover:text-accent transition-colors duration-300">
-                {plan.title}
-              </h3>
-
-              {/* Divider */}
-              <div className="w-12 h-px bg-accent/60 my-6 group-hover:w-full transition-all duration-500" />
-
-              {/* Features */}
-              <ul className="space-y-3 mb-8">
-                {plan.features.map((feature, i) => (
-                  <li key={i} className="font-mono text-xs text-foreground/70 flex items-start gap-2">
-                    <span className="text-accent mt-0.5 shrink-0">{"/"}</span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-
-              {/* Price */}
-              <div className="pt-6 border-t border-border/30">
-                <span className="font-[var(--font-bebas)] text-2xl text-accent tracking-tight">{plan.price}</span>
-              </div>
-            </div>
-
-            {/* Corner line */}
-            <div className="absolute top-0 right-0 w-12 h-12 opacity-0 group-hover:opacity-100 transition-all duration-500">
-              <div className="absolute top-0 right-0 w-full h-[1px] bg-accent" />
-              <div className="absolute top-0 right-0 w-[1px] h-full bg-accent" />
+            <div className="space-y-5 font-mono text-sm text-foreground/70">
+              <p className="hover:text-foreground transition">
+                → Estás resolviendo todo vos
+              </p>
+              <p className="hover:text-foreground transition">
+                → Dependés de freelancers que no siempre están
+              </p>
+              <p className="hover:text-foreground transition">
+                → Las mejoras tardan más de lo que deberían
+              </p>
+              <p className="hover:text-foreground transition">
+                → Tu producto no evoluciona al ritmo del negocio
+              </p>
             </div>
           </div>
-        ))}
-      </div>
 
-      {/* Extra hours note */}
-      <p className="mt-8 font-mono text-xs text-muted-foreground">
-        Horas adicionales: <span className="text-foreground">USD 12 / hora</span>
-      </p>
+          {/* DIVIDER */}
+          <div className="hidden md:block w-px bg-border/40" />
 
-      {/* CTA */}
-      <div ref={ctaRef} className="mt-12">
-        <a
-          href="#contact"
-          className="group inline-flex items-center gap-3 border border-foreground/20 px-6 py-3 font-mono text-xs uppercase tracking-widest text-foreground hover:border-accent hover:text-accent transition-all duration-200"
-        >
-          <ScrambleTextOnHover text="Consultar Disponibilidad" as="span" duration={0.6} />
-          <BitmapChevron className="transition-transform duration-[400ms] ease-in-out group-hover:rotate-45" />
-        </a>
+          {/* DERECHA */}
+          <div className="p-8 md:p-12 flex flex-col justify-between bg-white/[0.02]">
+            {/* TOP */}
+            <div>
+              <span className="inline-block text-[10px] uppercase tracking-widest text-accent border border-accent/40 px-3 py-1 mb-6">
+                Plan base
+              </span>
+
+              <p className="text-xs text-muted-foreground">Planes desde</p>
+
+              <h3 className="mt-3 font-[var(--font-bebas)] text-6xl md:text-7xl leading-none">
+                USD <span className="text-accent">300</span>
+              </h3>
+
+              <p className="text-muted-foreground text-sm mt-2">por mes</p>
+            </div>
+
+            {/* FEATURES */}
+            <div className="mt-8 space-y-4 text-sm bg-white/[0.02] border border-border/30 p-5 rounded-xl">
+              <p>✔ Equipo técnico que trabaja todas las semanas</p>
+              <p>✔ Mejoras constantes sin que las tengas que pedir</p>
+              <p>✔ Bugs resueltos rápido, sin frenar tu negocio</p>
+              <p>✔ Decisiones técnicas para escalar</p>
+            </div>
+
+            {/* CTA INTEGRADO */}
+            <div className="mt-8 pt-6 border-t border-border/30">
+              <p className="text-xs text-muted-foreground mb-6">
+                No pagás tareas. Pagás porque tu producto avance.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a
+                  href="/equipo"
+                  className="group inline-flex items-center justify-center gap-2 border border-accent px-5 py-3 text-[11px] uppercase tracking-widest text-accent hover:bg-accent hover:text-black transition"
+                >
+                  <ScrambleTextOnHover
+                    text="Ver cómo funciona"
+                    as="span"
+                  />
+                  <BitmapChevron className="group-hover:rotate-45 transition" />
+                </a>
+
+                <a
+                  href="https://wa.me/5491167470473"
+                  target="_blank"
+                  className="inline-flex items-center justify-center border border-foreground/30 px-5 py-3 text-[11px] uppercase tracking-widest hover:border-accent hover:text-accent transition"
+                >
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
-  )
+  );
 }

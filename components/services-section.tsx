@@ -140,7 +140,7 @@ export function ServicesSection() {
           01 / Services
         </span>
         <h2 className="mt-4 font-[var(--font-bebas)] text-5xl md:text-7xl tracking-tight">
-          WHAT WE BUILD
+          CÓMO HACEMOS CRECER TU PRODUCTO
         </h2>
       </div>
 
