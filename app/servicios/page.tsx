@@ -43,14 +43,19 @@ export default function ServicesPage() {
           <p className="text-xs text-gray-400 mb-6">01 / Servicios</p>
 
           <h1 className="text-[52px] md:text-[110px] leading-[0.9] font-[var(--font-bebas)]">
-            No hacemos webs.
+            Tu negocio necesita
             <br />
-            Construimos crecimiento.
+            algo más que una web.
           </h1>
 
           <p className="mt-6 text-xl text-gray-300 max-w-[600px]">
-            Diseñamos y desarrollamos soluciones digitales pensadas para
-            convertir, escalar y acompañar el crecimiento real de tu negocio.
+            Creamos soluciones digitales pensadas para generar resultados
+            reales: atraer clientes, mejorar procesos y escalar tu negocio con
+            una base sólida.
+          </p>
+
+          <p className="mt-4 text-sm text-gray-500 max-w-[500px]">
+            Desde landings que convierten hasta plataformas que crecen con vos.
           </p>
         </div>
       </div>
@@ -139,7 +144,7 @@ export default function ServicesPage() {
         <div className="grid md:grid-cols-2 gap-16 items-center">
           <div className="reveal">
             <h2 className="text-4xl md:text-5xl font-[var(--font-bebas)]">
-              Sitios dinámicos
+              Sitios dinámicos y autogestionables
             </h2>
 
             <p className="mt-6 text-gray-400 text-lg">
