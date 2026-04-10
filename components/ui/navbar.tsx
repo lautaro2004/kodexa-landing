@@ -29,10 +29,10 @@ export default function Navbar() {
 
         {/* NAV */}
         <nav className="hidden md:flex items-center gap-8 text-sm text-gray-400">
-          <Link href="/#servicios" className="hover:text-white transition">
+          <Link href="/servicios" className="hover:text-white transition">
             Servicios
           </Link>
-          <Link href="/#work" className="hover:text-white transition">
+          <Link href="/#proyectos" className="hover:text-white transition">
             Trabajos
           </Link>
           <Link href="/equipo-it" className="hover:text-white transition">

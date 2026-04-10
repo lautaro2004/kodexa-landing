@@ -176,13 +176,26 @@ export function ServicesSection() {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+          {/* Ver servicios */}
+          <a
+            href="/servicios"
+            className="group inline-flex items-center justify-center gap-3 border border-border/40 px-6 py-3 font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-accent hover:border-accent transition-all duration-200"
+          >
+            <ScrambleTextOnHover
+              text="Ver todos los servicios"
+              as="span"
+              duration={0.6}
+            />
+            <BitmapChevron className="transition-transform duration-[400ms] ease-in-out group-hover:rotate-45" />
+          </a>
+
           {/* Form CTA */}
           <a
             href="#contact"
             className="group inline-flex items-center justify-center gap-3 border border-foreground/20 px-6 py-3 font-mono text-xs uppercase tracking-widest text-foreground hover:border-accent hover:text-accent transition-all duration-200"
           >
             <ScrambleTextOnHover
-              text="Solicitar Propuesta"
+              text="Solicitar propuesta"
               as="span"
               duration={0.6}
             />

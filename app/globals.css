@@ -136,3 +136,17 @@
   background: oklch(0.7 0.2 45);
   color: oklch(0.08 0 0);
 }
+
+.label {
+  @apply font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground;
+}
+
+.input {
+  @apply w-full bg-background/60 border border-border
+  px-4 py-3 text-sm font-mono
+  text-foreground placeholder:text-muted-foreground/50
+  rounded-md outline-none
+  transition-all duration-200
+  focus:border-accent focus:ring-1 focus:ring-accent/40
+  hover:border-accent/40;
+}

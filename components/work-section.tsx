@@ -112,6 +112,7 @@ export function WorkSection() {
     <section
       ref={sectionRef}
       className="relative py-32 pl-6 md:pl-28 pr-6 md:pr-12"
+      id="proyectos"
     >
       {/* HEADER */}
       <div className="mb-10">
