@@ -130,7 +130,7 @@ export function ServicesSection() {
 
   return (
     <section
-      id="services"
+      id="servicios"
       ref={sectionRef}
       className="relative py-32 pl-6 md:pl-28 pr-6 md:pr-12"
     >

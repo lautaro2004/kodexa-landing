@@ -75,6 +75,7 @@ export function MembershipSection() {
     <section
       ref={sectionRef}
       className="relative py-28 px-6 md:px-28 border-t border-border/30 overflow-hidden"
+      id="equipo-it"
     >
       {/* BACKGROUND GLOW */}
       <div className="absolute right-0 top-0 w-[500px] h-[500px] bg-accent/10 blur-[120px] pointer-events-none" />
