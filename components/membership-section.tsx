@@ -167,7 +167,7 @@ export function MembershipSection() {
 
               <div className="flex flex-col sm:flex-row gap-3">
                 <a
-                  href="/equipo"
+                  href="/equipo-it"
                   className="group inline-flex items-center justify-center gap-2 border border-accent px-5 py-3 text-[11px] uppercase tracking-widest text-accent hover:bg-accent hover:text-black transition"
                 >
                   <ScrambleTextOnHover
