@@ -163,14 +163,14 @@ export function AboutSection() {
             portfolio="https://lautaroaquino.com/"
           />
 
-          <FounderCard
+          {/* <FounderCard
             name="Franco Carchedi"
             role="Co-Founder & Web Developer"
             bio1="Desarrollador web enfocado en frontend moderno y experiencias web bien diseñadas."
             bio2="Especializado en interfaces limpias, animaciones y productos digitales bien ejecutados."
             linkedin="https://www.linkedin.com/in/francocarchedi/"
             portfolio="https://www.francocarchedi.com/"
-          />
+          /> */}
         </div>
       </div>
     </section>
